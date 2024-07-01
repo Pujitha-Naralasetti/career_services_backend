@@ -14,6 +14,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    phone: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     isActive: {
       type: Sequelize.BOOLEAN,
       defaultValue: true,
@@ -25,6 +29,18 @@ module.exports = (sequelize, Sequelize) => {
     salt: {
       type: Sequelize.BLOB,
       allowNull: false,
+    },
+    dateOfBirth: {
+      type: Sequelize.DATE,
+    },
+    gender: {
+      type: Sequelize.STRING,
+    },
+    nationality: {
+      type: Sequelize.STRING,
+    },
+    address: {
+      type: Sequelize.STRING,
     },
   });
 
