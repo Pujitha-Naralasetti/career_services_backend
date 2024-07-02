@@ -21,6 +21,7 @@ db.certification = require('./certification.model.js')(sequelize, Sequelize);
 db.experience = require('./experience.model.js')(sequelize, Sequelize);
 db.active_resumes = require('./activeResume.model.js')(sequelize, Sequelize);
 db.skills = require('./skills.model.js')(sequelize, Sequelize);
+db.resumeSample= require('./resumeSample.model.js')(sequelize, Sequelize);
 // foreign key for session
 db.user.hasMany(db.session, { onDelete: "CASCADE" });
 db.session.belongsTo(db.user, { onDelete: "CASCADE" });
