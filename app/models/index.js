@@ -22,15 +22,22 @@ db.experience = require('./experience.model.js')(sequelize, Sequelize);
 db.active_resumes = require('./activeResume.model.js')(sequelize, Sequelize);
 db.skills = require('./skills.model.js')(sequelize, Sequelize);
 db.resumeSample= require('./resumeSample.model.js')(sequelize, Sequelize);
+db.education = require('./education.model.js')(sequelize, Sequelize);
+db.projects = require('./project.model.js')(sequelize, Sequelize);
+db.award = require('./award.model.js')(sequelize, Sequelize);
+
 // foreign key for session
 db.user.hasMany(db.session, { onDelete: "CASCADE" });
 db.session.belongsTo(db.user, { onDelete: "CASCADE" });
 
 db.user.belongsTo(db.role, { foreignKey: "roleId" }); // db.user belongs to one db.role
-db.user.hasMany(db.experience, { foreignKey: "studentId" }); // db.user has many db.experience
-db.user.hasMany(db.certification, { foreignKey: "studentId" }); // db.user has many Certifications
-db.user.hasMany(db.active_resumes, { foreignKey: "studentId" }); // db.user has many ActiveResumes
-db.user.belongsTo(db.skills, { foreignKey: "studentId" }); // db.user has many Skills
-db.active_resumes.belongsTo(db.user, { foreignKey: "studentId" }); // ActiveResume belongs to one db.user
+db.user.hasMany(db.experience, { foreignKey: "userId" }); // db.user has many db.experience
+db.user.hasMany(db.certification, { foreignKey: "userId" }); // db.user has many Certifications
+db.user.hasMany(db.active_resumes, { foreignKey: "userId" }); // db.user has many ActiveResumes
+db.user.hasMany(db.skills, { foreignKey: "userId" }); // db.user has many Skills
+db.active_resumes.belongsTo(db.user, { foreignKey: "userId" }); // ActiveResume belongs to one db.user
+db.user.hasMany(db.education, { foreignKey: "userId" }); // User has many Educations 
+db.user.hasMany(db.project, { foreignKey: "userId" }); // User has many Projects 
+db.user.hasMany(db.award, { foreignKey: "userId" }); // User has many Awards
 
 module.exports = db;
