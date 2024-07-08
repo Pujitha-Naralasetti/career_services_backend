@@ -4,11 +4,14 @@ module.exports = (app) => {
 // Create a new User
 router.post("/users/", User.create);
 
- // Update a User with id
- router.put("/users/:id", [authenticateRoute], User.update);
- 
  // Retrieve a single User with id
  router.get("/users/:id", [authenticateRoute], User.findOne);
+
+  // Update a User with id
+  router.put("/users/:id", [authenticateRoute], User.update);
+
+  // Delete a User with id
+  router.delete("/users/:id", [authenticateRoute], User.delete);
  
   app.use("/resumeapi", router);
 };
