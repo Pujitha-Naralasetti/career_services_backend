@@ -123,3 +123,30 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+// Update a User by the id in the request
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  User.update(req.body, {
+    where: { id: id },
+  })
+    .then((number) => {
+      if (number == 1) {
+        res.send({
+          status: "Success",
+          message: "User was updated successfully.",
+        });
+      } else {
+        res.send({
+          status: "Error",
+          message: `Cannot update User with id = ${id}. Maybe User was not found or req.body is empty!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error updating User with id =" + id,
+      });
+    });
+};
