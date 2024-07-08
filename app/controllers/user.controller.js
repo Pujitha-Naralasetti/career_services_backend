@@ -150,3 +150,29 @@ exports.update = (req, res) => {
       });
     });
 };
+
+// Delete a User with the specified id in the request
+exports.delete = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const user = await User.findByPk(id);
+    if (!user) {
+      res.send({
+        message: `User with ID ${id} not found`,
+        status: "Error",
+      });
+    } else {
+      await user.update({ isActive: false });
+      res.send({
+        message: "User deleted successfully",
+        status: "Success",
+      });
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Could not delete User with id = " + id,
+      status: "Error",
+    });
+  }
+};
