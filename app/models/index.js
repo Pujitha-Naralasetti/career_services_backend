@@ -23,7 +23,7 @@ db.active_resumes = require('./activeResume.model.js')(sequelize, Sequelize);
 db.skills = require('./skills.model.js')(sequelize, Sequelize);
 db.resumeSample= require('./resumeSample.model.js')(sequelize, Sequelize);
 db.education = require('./education.model.js')(sequelize, Sequelize);
-db.projects = require('./project.model.js')(sequelize, Sequelize);
+db.project = require('./project.model.js')(sequelize, Sequelize);
 db.award = require('./award.model.js')(sequelize, Sequelize);
 
 // foreign key for session

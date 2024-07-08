@@ -7,5 +7,8 @@ router.post("/users/", User.create);
  // Update a User with id
  router.put("/users/:id", [authenticateRoute], User.update);
  
+ // Retrieve a single User with id
+ router.get("/users/:id", [authenticateRoute], User.findOne);
+ 
   app.use("/resumeapi", router);
 };
