@@ -1,5 +1,5 @@
 {
-  "name": "resume-backend",
+  "name": "career-services-backend",
   "version": "1.0.0",
   "description": "Resume Node.js with Rest API",
   "main": "server.js",
