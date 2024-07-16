@@ -30,6 +30,12 @@ exports.login = async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         id: user.id,
+        phone: user.phone,
+        gender: user.gender,
+        roleId: user.roleId,
+        nationality: user.nationality,
+        address: user.address,
+        dateOfBirth: user.dateOfBirth,
         token: token,
       };
       res.send(userInfo);
