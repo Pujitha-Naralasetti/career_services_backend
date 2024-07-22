@@ -33,10 +33,9 @@ db.sequelize
           });
       }
     });
-
   })
   .catch((e) => {
-    console.log("Error creating table");
+    console.log("Error creating table", e);
   });
 
 var corsOptions = {
@@ -60,11 +59,13 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/education.routes.js")(app);
-require("./app/routes/certificate.routes.js")(app);
-require("./app/routes/skills.routes.js")(app);
 require("./app/routes/award.routes.js")(app);
-require("./app/routes/project.routes.js")(app);
+require("./app/routes/certificate.routes.js")(app);
 require("./app/routes/experience.routes.js")(app);
+require("./app/routes/project.routes.js")(app);
+require("./app/routes/skills.routes.js")(app);
+require("./app/routes/languages.routes.js")(app);
+require("./app/routes/onlineProfile.routes.js")(app);
 require("./app/routes/student.routes.js")(app);
 
 // set port, listen for requests
