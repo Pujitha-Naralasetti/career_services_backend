@@ -18,6 +18,8 @@ exports.findProfileById = async (req, res) => {
       { model: db.experience, as: "experiences", required: false },
       { model: db.project, as: "projects", required: false },
       { model: db.skills, as: "skills", required: false },
+      { model: db.languages, as: "languages", required: false },
+      { model: db.onlineProfile, as: "onlineProfiles", required: false },
     ],
   })
     .then(async (data) => {
