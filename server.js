@@ -66,6 +66,7 @@ require("./app/routes/project.routes.js")(app);
 require("./app/routes/skills.routes.js")(app);
 require("./app/routes/languages.routes.js")(app);
 require("./app/routes/onlineProfile.routes.js")(app);
+require("./app/routes/resumes.routes.js")(app);
 require("./app/routes/student.routes.js")(app);
 
 // set port, listen for requests

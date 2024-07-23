@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
     endDate: {
       type: Sequelize.DATE,
     },
+    address: {
+      type: Sequelize.STRING,
+    },
   });
   return Experience;
 };
