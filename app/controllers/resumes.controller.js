@@ -47,6 +47,31 @@ exports.findByUserId = async (req, res) => {
     });
 };
 
+exports.findTemplates = async (req, res) => {
+  await Resumes.findAll({
+    where: {
+      templateType: {
+        [Op.in]: [1, 2, 3, 4],
+      },
+    },
+  })
+    .then(async (data) => {
+      res.status(200).send({
+        data: data,
+        message: "Successfully fetched resumes templates",
+        status: "Success",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while fetching the resumes details.",
+        status: "Error",
+      });
+    });
+};
 
 exports.findById = async (req, res) => {
   const id = req.params.id;
