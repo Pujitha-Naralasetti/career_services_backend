@@ -25,8 +25,6 @@ db.resumeSample = require("./resumeSample.model.js")(sequelize, Sequelize);
 db.education = require("./education.model.js")(sequelize, Sequelize);
 db.project = require("./project.model.js")(sequelize, Sequelize);
 db.award = require("./award.model.js")(sequelize, Sequelize);
-db.feedback = require("./feedback.model.js")(sequelize, Sequelize);
-db.resumeVersions = require("./resumeVersions.model.js")(sequelize, Sequelize);
 db.languages = require("./languages.model.js")(sequelize, Sequelize);
 db.onlineProfile = require("./onlineProfile.model.js")(sequelize, Sequelize);
 
@@ -44,10 +42,6 @@ db.user.hasMany(db.skills, { foreignKey: "userId" }); // db.user has many Skills
 db.user.hasMany(db.languages, { foreignKey: "userId" }); // db.user has many Languages
 db.user.hasMany(db.onlineProfile, { foreignKey: "userId" }); // db.user has many Online Profile
 db.active_resumes.belongsTo(db.user, { foreignKey: "userId" }); // ActiveResume belongs to one db.user
-db.user.hasMany(db.resumeVersions, { foreignKey: 'userId' }); // User has many ResumeVersions
-db.resumeSample.hasMany(db.resumeVersions, { foreignKey: 'resumeId' }); // ResumeSample has many ResumeVersions
-db.resumeVersions.hasOne(db.feedback, { foreignKey: 'feedbackId' }); // ResumeVersion has one Feedback
 db.active_resumes.belongsTo(db.user, { foreignKey: 'userId' }); // ActiveResume belongs to one User
-db.active_resumes.belongsTo(db.resumeVersions, { foreignKey: 'resumeVersionId' }); // ActiveResume belongs to one ResumeVersion
 
 module.exports = db;
