@@ -6,6 +6,9 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./app/models");
+const { Op } = require('sequelize');
+
+const templateData = require("./app/utils/templates.js");
 
 db.sequelize
   .sync({
@@ -26,13 +29,29 @@ db.sequelize
             },
           ])
           .then(() => {
-            console.log("Records are inserted into table Language");
+            console.log("Records are inserted into table Role");
           })
           .catch((e) => {
-            console.log("Trouble inserting records into Language table", e);
+            console.log("Trouble inserting records into Role table", e);
           });
       }
     });
+    db.resumes.findAll({where: {
+      templateType: {
+        [Op.in] : [1,2,3,4]
+      }
+    }}).then((data) => {
+      if(data?.length === 0) {
+        db.resumes
+          .bulkCreate(templateData)
+          .then(() => {
+            console.log("Records are inserted into Resume table");
+          })
+          .catch((e) => {
+            console.log("Trouble inserting records into resume table", e);
+          });
+      }
+    })
   })
   .catch((e) => {
     console.log("Error creating table", e);
@@ -66,6 +85,7 @@ require("./app/routes/project.routes.js")(app);
 require("./app/routes/skills.routes.js")(app);
 require("./app/routes/languages.routes.js")(app);
 require("./app/routes/onlineProfile.routes.js")(app);
+require("./app/routes/resumes.routes.js")(app);
 require("./app/routes/student.routes.js")(app);
 
 // set port, listen for requests

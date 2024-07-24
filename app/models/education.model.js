@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
     gpa: {
       type: Sequelize.STRING,
     },
+    address: {
+      type: Sequelize.STRING,
+    },
   });
   return Education;
 };
