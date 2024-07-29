@@ -47,12 +47,36 @@ exports.findByUserId = async (req, res) => {
     });
 };
 
+exports.findAllForStaff = async (req, res) => {
+  await Resumes.findAll({
+    where: {
+      userId: {
+        [Op.ne]: null,
+      },
+    },
+  })
+    .then(async (data) => {
+      res.status(200).send({
+        data: data,
+        message: "Successfully fetched resumes details",
+        status: "Success",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while fetching the resumes details.",
+        status: "Error",
+      });
+    });
+};
+
 exports.findTemplates = async (req, res) => {
   await Resumes.findAll({
     where: {
-      templateType: {
-        [Op.in]: [1, 2, 3, 4],
-      },
+      userId: null,
     },
   })
     .then(async (data) => {
@@ -99,25 +123,30 @@ exports.findById = async (req, res) => {
     });
 };
 
-exports.update = async (req, res) => {
+exports.update = (req, res) => {
   const id = req.params.id;
 
-  try {
-    const resumeDetails = await Resumes.update(req.body, {
-      where: {
-        userId: id,
-      },
+  Resumes.update(req.body, {
+    where: { id: id },
+  })
+    .then((number) => {
+      if (number == 1) {
+        res.send({
+          status: "Success",
+          message: "Resume Details updated successfully.",
+        });
+      } else {
+        res.send({
+          status: "Error",
+          message: `Cannot update Resume with id = ${id}. Maybe Resume was not found or req.body is empty!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error updating Resume with id =" + id,
+      });
     });
-
-    res.send({
-      data: resumeDetails,
-      message: "Resumes Details updated successfully",
-      status: "Success",
-    });
-  } catch (error) {
-    console.error("Error updating resumes:", error);
-    res.status(500).json({ message: "Error updating resumes" });
-  }
 };
 
 exports.delete = async (req, res) => {
