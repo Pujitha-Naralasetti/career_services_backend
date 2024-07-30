@@ -61,7 +61,7 @@ exports.askAI = async (req, res) => {
       prompt += `  * ${edu.institutionName} - ${edu.degree} - ${edu.course}\n`;
     });
 
-    prompt += `\n* **Skills:**\n  * ${data?.skills?.hardSkills.join(
+    prompt += `\n* **Skills:**\n  * ${data?.skills?.hardSkills?.join(
       ", "
     )}\n\n**Job Title:** ${jobTitle}\n\nAssess the candidate's qualifications based on the provided experience, education, and skills. Provide a comprehensive evaluation in 2-3 sentences, highlighting key strengths and potential weaknesses for the given job title.`;
 
@@ -83,7 +83,7 @@ exports.askAI = async (req, res) => {
       prompt += `  * ${edu.institutionName} - ${edu.degree} - ${edu.course}\n`;
     });
 
-    prompt += `\n* **Skills:**\n  * ${data?.skills?.hardSkills.join(
+    prompt += `\n* **Skills:**\n  * ${data?.skills?.hardSkills?.join(
       ", "
     )}\n\n**Job Title:** ${jobTitle}\n\nAssess the candidate's qualifications based on the provided experience, education, and skills. Provide a score out of 100 what percent the profile matches for the given job title. Give me just score percentage.`;
 
