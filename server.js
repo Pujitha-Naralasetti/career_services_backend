@@ -87,6 +87,8 @@ require("./app/routes/languages.routes.js")(app);
 require("./app/routes/onlineProfile.routes.js")(app);
 require("./app/routes/resumes.routes.js")(app);
 require("./app/routes/student.routes.js")(app);
+require("./app/routes/dashboard.routes.js")(app);
+require("./app/routes/feedback.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3201;
