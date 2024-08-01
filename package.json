@@ -1,12 +1,12 @@
 {
-  "name": "resume-backend",
+  "name": "career-services-backend",
   "version": "1.0.0",
   "description": "Resume Node.js with Rest API",
   "main": "server.js",
   "scripts": {
     "test": "jest --",
     "start": "node server.js",
-    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json resume-backend.service .env deploy"
+    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json career-services-backend.service .env deploy"
   },
   "keywords": [
     "node.js",
