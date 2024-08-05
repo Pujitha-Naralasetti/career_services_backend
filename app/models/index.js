@@ -41,5 +41,9 @@ db.user.hasMany(db.skills, { foreignKey: "userId" }); // db.user has many Skills
 db.user.hasMany(db.languages, { foreignKey: "userId" }); // db.user has many Languages
 db.user.hasMany(db.onlineProfile, { foreignKey: "userId" }); // db.user has many Online Profile
 db.user.hasMany(db.resumes, { foreignKey: "userId" }); // db.user has many Resumes
+db.resumes.hasMany(db.feedback, { foreignKey: "resumeId" }); // db.resumes has many Feedbacks
+db.user.hasMany(db.feedback, { foreignKey: "staffId"}); // db.resumes has many Feedbacks
+db.feedback.belongsTo(db.user, { foreignKey: "staffId", as: "staff" }); // A feedback belongs to a user (staff)
+db.feedback.belongsTo(db.resumes, { foreignKey: "resumeId" }); // A feedback belongs to a resume
 
 module.exports = db;
