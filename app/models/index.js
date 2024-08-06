@@ -23,6 +23,7 @@ db.skills = require("./skills.model.js")(sequelize, Sequelize);
 db.education = require("./education.model.js")(sequelize, Sequelize);
 db.project = require("./project.model.js")(sequelize, Sequelize);
 db.award = require("./award.model.js")(sequelize, Sequelize);
+db.feedback = require("./feedback.model.js")(sequelize, Sequelize);
 db.languages = require("./languages.model.js")(sequelize, Sequelize);
 db.onlineProfile = require("./onlineProfile.model.js")(sequelize, Sequelize);
 db.resumes = require("./resumes.model.js")(sequelize, Sequelize);
