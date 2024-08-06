@@ -6,5 +6,8 @@ module.exports = (app) => {
   // generate feedback by AI
   router.post("/feedback/getFeedbackFromAI", [authenticateRoute], Feedback.askAI);
 
+   // update feedback
+   router.post("/feedback/updateFeedback", [authenticateRoute], Feedback.updateFeedback);
+
   app.use("/resumeapi", router);
 };
