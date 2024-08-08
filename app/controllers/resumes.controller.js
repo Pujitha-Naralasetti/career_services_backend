@@ -28,6 +28,22 @@ exports.findByUserId = async (req, res) => {
     where: {
       userId: userId,
     },
+    include: [
+      {
+        model: db.feedback,
+        required: false,
+        include: [
+          {
+            model: db.user,
+            required: false,
+            as: "staff",
+            attributes: {
+              exclude: ["password", "salt"],
+            },
+          },
+        ],
+      },
+    ],
   })
     .then(async (data) => {
       res.status(200).send({
@@ -54,6 +70,7 @@ exports.findAllForStaff = async (req, res) => {
         [Op.ne]: null,
       },
     },
+    include: [{ model: db.feedback, required: false }],
   })
     .then(async (data) => {
       res.status(200).send({
@@ -104,6 +121,22 @@ exports.findById = async (req, res) => {
     where: {
       id: id,
     },
+    include: [
+      {
+        model: db.feedback,
+        required: false,
+        include: [
+          {
+            model: db.user,
+            required: false,
+            as: "staff",
+            attributes: {
+              exclude: ["password", "salt"],
+            },
+          },
+        ],
+      },
+    ],
   })
     .then(async (data) => {
       res.status(200).send({
